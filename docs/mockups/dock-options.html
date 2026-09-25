@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>خيارات شريط التنقل — co-fund</title>
+<style>
+:root{--navy:#0F172A;--blue:#1E40AF;--gold:#A16207;--goldlt:#EAB308;--mut:#64748B;--bg:#F1F5F9;--card:#fff;--line:#E2E8F0}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:#0F172A;font-family:'Segoe UI',Tahoma,Arial,sans-serif;padding:20px 14px 60px}
+h1{font-size:19px;text-align:center;margin:4px 0}
+.sub{text-align:center;color:var(--mut);font-size:12px;margin:0 0 18px}
+.opt{max-width:430px;margin:0 auto 26px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:16px 14px 18px;box-shadow:0 10px 30px -18px rgba(15,23,42,.35)}
+.opt h2{font-size:15px;margin:0 0 2px;display:flex;align-items:center;gap:8px}
+.opt h2 .tag{font-size:10px;background:#0F172A;color:#fff;border-radius:99px;padding:2px 10px}
+.opt p{font-size:11.5px;color:var(--mut);margin:0 0 12px;line-height:1.7}
+.stage{background:linear-gradient(180deg,#F8FAFC,#EDF1F6);border:1px dashed #CBD5E1;border-radius:16px;padding:26px 10px 14px;position:relative;min-height:170px}
+.stage .fake{height:8px;border-radius:99px;background:#E2E8F0;margin:0 30px 10px}
+.stage .fake:last-of-type{margin-bottom:0;width:60%}
+/* shared dock base */
+.dock{position:absolute;bottom:10px;right:10px;left:10px;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);border:1px solid var(--line);border-radius:22px;box-shadow:0 14px 34px -16px rgba(15,23,42,.4)}
+.dock .row{position:relative;display:grid;grid-template-columns:repeat(5,1fr);padding:6px;text-align:center}
+.dock button{border:0;background:none;font-family:inherit;cursor:pointer;min-height:56px;border-radius:14px;color:var(--mut);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:10px;font-weight:700}
+.dock button:active{transform:scale(.92)}
+.dock svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dot{width:4px;height:4px;border-radius:99px;background:transparent}
+button.on .dot{background:var(--goldlt)}
+/* A: full pill */
+#aInd{position:absolute;top:6px;bottom:6px;border-radius:16px;background:var(--navy);transition:left .3s cubic-bezier(.34,1.3,.64,1),width .3s}
+#aDock button.on{color:#fff}
+/* B: icon chip */
+#bInd{position:absolute;border-radius:14px;background:var(--navy);transition:left .32s cubic-bezier(.34,1.4,.64,1),top .32s;box-shadow:0 8px 18px -8px rgba(15,23,42,.6)}
+#bDock button.on{color:#fff}
+#bDock button svg{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+#bDock button.on svg{transform:scale(1.12)}
+/* C: underline */
+#cDock button{color:var(--mut)}
+#cDock button.on{color:var(--navy)}
+#cDock button.on svg{transform:scale(1.18)}
+#cDock button svg{transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+#cBar{position:absolute;bottom:2px;height:4px;width:34px;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--goldlt));transition:left .3s cubic-bezier(.34,1.3,.64,1)}
+/* D: raised circle */
+#dDock button.on{color:var(--navy)}
+#dDock .ball{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .25s cubic-bezier(.34,1.4,.64,1);position:relative}
+#dDock button.on .ball{background:var(--navy);color:#fff;transform:translateY(-14px);box-shadow:0 12px 20px -8px rgba(15,23,42,.55)}
+#dDock button.on .lbl{color:var(--navy)}
+.badge{position:absolute;top:2px;left:8px;min-width:17px;height:17px;padding:0 4px;border-radius:99px;background:#DC2626;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.gdot{position:absolute;top:4px;left:12px;width:9px;height:9px;border-radius:99px;background:var(--goldlt);border:2px solid #fff}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<h1>خيارات شريط التنقل السفلي</h1>
+<p class="sub">اضغط أي أيقونة لتجربة الحركة — كلها بأيقونات SVG مدمجة (تعمل بدون إنترنت)</p>
+
+<!-- A -->
+<section class="opt"><h2><span class="tag">A</span> الحبة المنزلقة الكاملة</h2>
+<p>التصميم الحالي في التطبيق: حبة كحلية تنزلق خلف الزر كله. هادئ ومقروء، لكن الحبة كبيرة وتتحرك مسافة طويلة.</p>
+<div class="stage"><div class="fake"></div><div class="fake"></div>
+<nav class="dock" aria-label="A"><div class="row" id="aRow"><span id="aInd"></span></div></nav></div></section>
+
+<!-- B -->
+<section class="opt"><h2><span class="tag">B</span> شريحة الأيقونة</h2>
+<p>الحبة تنزلق خلف الأيقونة فقط (ثابتة الحجم فلا اهتزاز)، الأيقونة تكبر قليلاً، نقطة ذهبية تحت النشط. كانت في التطبيق لفترة قصيرة.</p>
+<div class="stage"><div class="fake"></div><div class="fake"></div>
+<nav class="dock" aria-label="B"><div class="row" id="bRow"><span id="bInd"></span></div></nav></div></section>
+
+<!-- C -->
+<section class="opt"><h2><span class="tag">C</span> خط ذهبي سفلي</h2>
+<p>بدون حبة: الأيقونة النشطة تكبر وتتلون كحلي مع خط ذهبي ينزلق تحتها. أخف وأهدأ حركة، إحساس iOS.</p>
+<div class="stage"><div class="fake"></div><div class="fake"></div>
+<nav class="dock" aria-label="C"><div class="row" id="cRow"><span id="cBar"></span></div></nav></div></section>
+
+<!-- D -->
+<section class="opt"><h2><span class="tag">D</span> الزر البارز</h2>
+<p>الأيقونة النشطة تصبح دائرة كحلية بارزة للأعلى. واضح جداً، حركة مرحة — لكنه أعلى صخباً ويحرك التخطيط.</p>
+<div class="stage"><div class="fake"></div><div class="fake"></div>
+<nav class="dock" aria-label="D"><div class="row" id="dRow"></div></nav></div></section>
+
+<p class="sub">أخبرني بالحرف (A/B/C/D) وسأطبقه في التطبيق وأنشره على الرابط.</p>
+
+<script>
+const ICONS={
+home:'<svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h5v-6h4v6h5V9.5"/></svg>',
+wallet:'<svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v2"/><path d="M3 7v10a2 2 0 0 0 2 2h16a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1H5"/><circle cx="16.5" cy="14" r="1.2"/></svg>',
+food:'<svg viewBox="0 0 24 24"><path d="M7 3v8M4 3v4a3 3 0 0 0 6 0V3"/><path d="M7 11v10M17 3c-2 1.5-3 4-3 7v2h3v9M17 3v9"/></svg>',
+users:'<svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4.5-6.2"/></svg>',
+clock:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>'};
+const TABS=[['home','الرئيسية'],['wallet','المدفوعات'],['food','الوجبات'],['users','الأعضاء'],['clock','السجل']];
+function build(rowId,mode){
+  const row=document.getElementById(rowId);let cur=0;
+  TABS.forEach((t,i)=>{
+    const b=document.createElement('button');
+    b.innerHTML=(mode==='D'?'<span class="ball">':'<span style="position:relative">')+ICONS[t[0]]
+      +(t[0]==='users'?'<span class="gdot"></span>':'')
+      +(t[0]==='clock'?'<span class="badge">3</span>':'')
+      +'</span><span class="lbl">'+t[1]+'</span>'+(mode!=='D'?'<span class="dot"></span>':'');
+    b.setAttribute('aria-label',t[1]);
+    b.onclick=()=>{cur=i;paint();};
+    row.appendChild(b);
+  });
+  const btns=[...row.querySelectorAll('button')];
+  function paint(){
+    btns.forEach((b,i)=>b.classList.toggle('on',i===cur));
+    const ind=row.querySelector('#aInd,#bInd,#cBar');
+    if(ind){
+      const r=row.getBoundingClientRect();
+      let target;
+      if(ind.id==='cBar'){const lbl=btns[cur].querySelector('.lbl').getBoundingClientRect();target={l:lbl.left-r.left+(lbl.width-34)/2};}
+      else{const ic=btns[cur].querySelector('svg').getBoundingClientRect();
+        target = ind.id==='bInd'
+          ? {l:ic.left-r.left-9,t:ic.top-r.top-7,w:44,h:40}
+          : {l:btns[cur].getBoundingClientRect().left-r.left};}
+      if(target.l!==undefined)ind.style.left=target.l+'px';
+      if(target.w!==undefined)ind.style.width=target.w+'px';
+      if(target.t!==undefined)ind.style.top=target.t+'px';
+      if(target.w!==undefined){ind.style.width=target.w+'px';ind.style.height=target.h+'px';}
+    }
+    if(navigator.vibrate)navigator.vibrate(6);
+  }
+  paint();addEventListener('resize',paint);
+  if(mode==='D')btns[0].classList.add('on');
+  return {paint};
+}
+const—noop=null;
+const painters=[build('aRow','A'),build('bRow','B'),build('cRow','C'),build('dRow','D')];
+addEventListener('load',()=>setTimeout(()=>painters.forEach(p=>p.paint()),350));
+</script>
+</body>
+</html>

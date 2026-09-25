@@ -240,18 +240,17 @@ const TABS: { id: TabId; label: string; icon: string }[] = [
 
 export function DockNav({ tab, onTab, auditBadge, guestDot }: { tab: TabId; onTab: (t: TabId) => void; auditBadge: number; guestDot: boolean }) {
   const barRef = useRef<HTMLDivElement>(null);
-  const btnRefs = useRef<Partial<Record<TabId, HTMLButtonElement | null>>>({});
-  const indRef = useRef<HTMLSpanElement>(null);
+  const labelRefs = useRef<Partial<Record<TabId, HTMLSpanElement | null>>>({});
+  const barIndRef = useRef<HTMLSpanElement>(null);
 
   const move = useCallback(() => {
     const bar = barRef.current;
-    const ind = indRef.current;
-    const btn = btnRefs.current[tab];
-    if (!bar || !ind || !btn) return;
+    const ind = barIndRef.current;
+    const lbl = labelRefs.current[tab];
+    if (!bar || !ind || !lbl) return;
     const barRect = bar.getBoundingClientRect();
-    const r = btn.getBoundingClientRect();
-    ind.style.left = `${r.left - barRect.left}px`;
-    ind.style.width = `${r.width}px`;
+    const r = lbl.getBoundingClientRect();
+    ind.style.left = `${r.left - barRect.left + (r.width - 34) / 2}px`;
   }, [tab]);
 
   useLayoutEffect(() => {
@@ -273,16 +272,13 @@ export function DockNav({ tab, onTab, auditBadge, guestDot }: { tab: TabId; onTa
   return (
     <nav className="fixed bottom-0 inset-x-0 z-40" style={{ padding: '0 12px calc(10px + env(safe-area-inset-bottom))' }} aria-label="التنقل السفلي">
       <div ref={barRef} className="max-w-md mx-auto relative rounded-[26px] border border-[#E2E8F0] dark:border-white/10 bg-white/75 dark:bg-[#0F172A]/75 shadow-[0_18px_45px_-18px_rgba(15,23,42,.45)]" style={{ backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }} role="tablist" aria-label="أقسام الصندوق" onKeyDown={onKey}>
-        <span ref={indRef} className="absolute top-1.5 bottom-1.5 rounded-[20px] transition-all duration-300 bg-[#0F172A] dark:bg-white" style={{ left: 6, width: 60 }} aria-hidden="true" />
+        <span ref={barIndRef} className="absolute bottom-1 h-1 w-[34px] rounded-full" style={{ left: 6, background: 'linear-gradient(90deg,#A16207,#EAB308)', transition: 'left .3s cubic-bezier(.34,1.3,.64,1)' }} aria-hidden="true" />
         <div className="relative grid grid-cols-5 gap-0 text-[11px] font-bold text-center px-1.5 py-1.5">
           {TABS.map((t) => {
             const active = t.id === tab;
             return (
               <button
                 key={t.id}
-                ref={(el) => {
-                  btnRefs.current[t.id] = el;
-                }}
                 data-tab={t.id}
                 role="tab"
                 aria-selected={active}
@@ -291,10 +287,10 @@ export function DockNav({ tab, onTab, auditBadge, guestDot }: { tab: TabId; onTa
                   if (navigator.vibrate) navigator.vibrate(8);
                   onTab(t.id);
                 }}
-                className={`relative z-10 flex flex-col items-center gap-0.5 py-1.5 min-h-[60px] rounded-[18px] transition-all active:scale-90 ${active ? 'text-white dark:text-[#0F172A] -translate-y-1.5' : 'text-[#64748B]'}`}
+                className={`relative z-10 flex flex-col items-center gap-0.5 py-2 pb-2.5 min-h-[62px] rounded-[18px] transition-colors active:scale-95 ${active ? 'text-[#0F172A] dark:text-white' : 'text-[#64748B]'}`}
               >
-                <span className={`transition-transform ${active ? 'scale-[1.18] -translate-y-px' : ''} relative`}>
-                  <i className={`fi ${t.icon}`} style={{ fontSize: 22 }} />
+                <span className="relative transition-transform" style={{ transform: active ? 'scale(1.18)' : 'none', transitionTimingFunction: 'cubic-bezier(.34,1.56,.64,1)', transitionDuration: '.25s' }}>
+                  <i className={`fi ${t.icon} fi-nav`} />
                   {t.id === 'members' && guestDot && <span className="absolute -top-1 -left-1 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-[#0F172A]" style={{ background: '#EAB308' }} title="ضيف جديد" />}
                   {t.id === 'activity' && auditBadge > 0 && (
                     <span className="absolute -top-1.5 -left-2 min-w-[18px] h-[18px] px-1 rounded-full text-[11px] font-extrabold text-white flex items-center justify-center tabular-nums" style={{ background: '#DC2626' }}>
@@ -302,8 +298,14 @@ export function DockNav({ tab, onTab, auditBadge, guestDot }: { tab: TabId; onTa
                     </span>
                   )}
                 </span>
-                <span>{t.label}</span>
-                <span className="w-1 h-1 rounded-full" style={{ background: active ? '#EAB308' : 'transparent' }} />
+                <span
+                  ref={(el) => {
+                    labelRefs.current[t.id] = el;
+                  }}
+                  className={active ? 'font-extrabold' : ''}
+                >
+                  {t.label}
+                </span>
               </button>
             );
           })}
