@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 • minimal — صندوق الفطور</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.css">
+<script>tailwind.config={darkMode:'class'}</script>
+<style>
+*:focus-visible{outline:2px solid #2563eb}
+body{font-family:'Segoe UI',Tahoma;font-feature-settings:"tnum"}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.anim{animation:rise .45s ease both}.d1{animation-delay:.06s}.d2{animation-delay:.12s}
+.row{transition:background .15s,transform .15s}.row:hover{background:#eff6ff}.dark .row:hover{background:#0f172a}
+.row:active{transform:scale(.995)}
+.sheet{animation:sheetUp .28s ease both}
+.tab-panel{animation:rise .3s ease both}
+.bnav button{transition:all .2s}.bnav button.active{transform:translateY(-6px)}
+.bnav button.active .pill{background:#1d4ed8;color:#fff}
+.bnav button.active{color:#1d4ed8}
+.load{background:linear-gradient(90deg,#e2e8f0 25%,#f8fafc 50%,#e2e8f0 75%);background-size:200% 100%;animation:shimmer 1.6s infinite}
+</style>
+</head>
+<body class="bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen pb-28">
+<header class="border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/90 backdrop-blur sticky top-0 z-30"><div class="max-w-2xl mx-auto px-4 py-3.5 flex justify-between items-center anim"><div><h1 class="font-semibold tracking-tight flex items-center gap-2"><i class="fi fi-ss-box text-blue-700"></i> co-fund — الصندوق</h1><p class="text-xs text-slate-500">Minimal • 10+1 • بدون تحويل • <a class="underline" href="https://www.flaticon.com/uicons">Flaticon Uicons</a> • <a class="underline" href="index.html">Hub</a></p></div><div class="flex items-center gap-2 text-sm"><span class="flex items-center gap-1.5 text-slate-500"><i class="fi fi-ss-user"></i> أحمد</span><button id="darkBtn" class="w-9 h-9 rounded-full border flex items-center justify-center"><i class="fi fi-ss-moon"></i></button></div></div></header>
+<main class="max-w-2xl mx-auto px-4 py-5 space-y-5">
+<div class="anim rounded-2xl border border-blue-100 dark:border-slate-800 bg-blue-50/60 dark:bg-slate-900 p-4 flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center"><i class="fi fi-ss-alarm-clock"></i></span><div class="flex-1 text-sm"><b>الاستحقاق: 1 أكتوبر (6 أيام) — SYP أولاً</b><p class="text-xs text-slate-500">700,000 • حرق 110K/يوم • TRL تكفي 6.9 يوم</p></div><button onclick="openModal('payModal')" class="text-blue-700 font-bold text-sm flex items-center gap-1"><i class="fi fi-ss-plus"></i> جديد</button></div>
+<section id="tab-home" class="tab-panel space-y-5">
+<div><h2 class="anim text-xs uppercase tracking-widest text-slate-400 mb-1">Balances — 03</h2><ul class="anim d1 divide-y divide-slate-200 dark:divide-slate-800 border-y border-slate-200 dark:border-slate-800">
+<li class="row py-3.5 flex justify-between items-center"><span class="flex items-center gap-3"><i class="fi fi-ss-coins text-amber-500 text-xl"></i><span><b>01 — SYP</b><br><span class="text-xs text-slate-500">مدفوع 2.5M • مصروف 1.8M</span></span></span><span class="font-semibold tabular-nums text-left">700,000<br><span class="text-xs text-red-600 font-bold">6.3d أولاً</span></span></li>
+<li class="row py-3.5 flex justify-between items-center"><span class="flex items-center gap-3"><i class="fi fi-ss-wallet text-blue-600 text-xl"></i><span><b>02 — TRL</b><br><span class="text-xs text-slate-500">مدفوع 3,000 • مصروف 2,100</span></span></span><span class="font-semibold tabular-nums">900<br><span class="text-xs text-slate-500">6.9d</span></span></li>
+<li class="row py-3.5 flex justify-between items-center"><span class="flex items-center gap-3"><i class="fi fi-ss-piggy-bank text-emerald-500 text-xl"></i><span><b>03 — USD</b><br><span class="text-xs text-slate-500">مدفوع 100 • مصروف 40</span></span></span><span class="font-semibold tabular-nums">60<br><span class="text-xs text-slate-500">20d</span></span></li>
+</ul></div>
+<div><h2 class="anim d1 text-xs uppercase tracking-widest text-slate-400 mb-2">Timeline</h2><ol class="anim d2 relative border-r border-slate-200 dark:border-slate-800 pr-5 space-y-4 text-sm">
+<li><span class="absolute -right-[7px] w-3.5 h-3.5 bg-blue-700 rounded-full border-2 border-white dark:border-slate-950"></span><b class="flex items-center gap-1.5"><i class="fi fi-ss-wallet text-blue-600"></i> 25/09 — دفعة</b> <span class="tabular-nums font-semibold">200,000 SYP + 100 TRL</span> — أحمد <span class="text-slate-500">10:30 • بصمة</span></li>
+<li><span class="absolute -right-[7px] w-3.5 h-3.5 bg-slate-300 rounded-full border-2 border-white dark:border-slate-950"></span><b class="flex items-center gap-1.5"><i class="fi fi-ss-utensils text-slate-500"></i> 25/09 — وجبة</b> <span class="tabular-nums font-semibold">320,000 SYP + 180 TRL</span> — محمد • 9</li>
+<li><span class="absolute -right-[7px] w-3.5 h-3.5 bg-slate-300 rounded-full border-2 border-white dark:border-slate-950"></span><b class="flex items-center gap-1.5"><i class="fi fi-ss-edit text-amber-500"></i> 24/09 — تعديل</b> <span class="line-through text-slate-400">250,000</span> ← <b class="tabular-nums">280,000 SYP</b> — سارة</li>
+</ol></div>
+</section>
+<section id="tab-payments" class="tab-panel hidden"><div class="flex items-center gap-2 border rounded-xl px-3 py-2 text-sm text-slate-500"><i class="fi fi-ss-search"></i><input placeholder="filter…" class="flex-1 bg-transparent outline-none"></div><ul class="divide-y border-y mt-2 text-sm"><li class="row py-2.5 flex justify-between"><span class="flex items-center gap-2"><i class="fi fi-ss-wallet text-blue-600"></i> 25/09 — أحمد — <b class="tabular-nums">200K + 100</b></span><button class="text-blue-600" onclick="openModal('payModal')"><i class="fi fi-ss-edit"></i></button></li></ul></section>
+<section id="tab-meals" class="tab-panel hidden text-sm"><ul class="divide-y border-y"><li class="row py-2.5 flex items-center gap-2"><i class="fi fi-ss-utensils"></i> 25/09 — <b class="tabular-nums">320K + 180</b> — محمد</li></ul></section>
+<section id="tab-members" class="tab-panel hidden text-sm"><ul class="divide-y border-y"><li class="row py-2.5 flex justify-between"><span class="flex items-center gap-2"><i class="fi fi-ss-user"></i> أحمد — active</span><span class="text-slate-400">••••</span></li><li class="row py-2.5 flex justify-between"><span class="flex items-center gap-2"><i class="fi fi-ss-user"></i> علي — guest week</span><span class="text-slate-400">••••</span></li></ul></section>
+<section id="tab-activity" class="tab-panel hidden text-sm"><ul class="divide-y border-y"><li class="row py-2.5 flex items-center gap-2"><i class="fi fi-ss-receipt"></i> 10:30 — أحمد — create — 200K + 100</li></ul></section>
+</main>
+<nav class="bnav fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur border-t border-slate-200 dark:border-slate-800"><div class="max-w-2xl mx-auto px-4 py-2 grid grid-cols-5 gap-1 text-[11px] font-semibold text-center text-slate-500"><button data-tab="home" class="tab-btn active flex flex-col items-center gap-1"><span class="pill w-12 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-base"><i class="fi fi-ss-home"></i></span>نظرة</button><button data-tab="payments" class="tab-btn flex flex-col items-center gap-1"><span class="pill w-12 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-base"><i class="fi fi-ss-wallet"></i></span>دفع</button><button data-tab="meals" class="tab-btn flex flex-col items-center gap-1"><span class="pill w-12 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-base"><i class="fi fi-ss-utensils"></i></span>وجبات</button><button data-tab="members" class="tab-btn flex flex-col items-center gap-1"><span class="pill w-12 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-base"><i class="fi fi-ss-users"></i></span>أعضاء</button><button data-tab="activity" class="tab-btn flex flex-col items-center gap-1"><span class="pill w-12 h-8 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-base"><i class="fi fi-ss-receipt"></i></span>سجل</button></div></nav>
+<div id="payModal" class="hidden fixed inset-0 z-50 bg-black/40 flex items-end sm:items-center justify-center p-4"><form class="sheet bg-white dark:bg-slate-900 border rounded-2xl p-5 w-full max-w-sm space-y-3" onsubmit="event.preventDefault();closeModal('payModal')"><b class="text-sm flex items-center gap-2"><i class="fi fi-ss-wallet text-blue-600"></i> New entry — multi-line</b><div class="flex gap-2"><input required type="number" placeholder="amount" class="flex-1 border rounded-xl px-3 py-2.5 bg-transparent tabular-nums"><select class="border rounded-xl px-2 bg-transparent"><option>SYP</option><option>TRL</option><option>USD</option></select></div><button class="w-full bg-blue-700 text-white rounded-xl py-2.5 text-sm font-bold">Save</button><button type="button" onclick="closeModal('payModal')" class="w-full text-xs text-slate-500">Cancel</button></form></div>
+<script>
+function showTab(id){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.add('hidden'));const el=document.getElementById('tab-'+id);el.classList.remove('hidden');el.style.animation='none';void el.offsetWidth;el.style.animation='';document.querySelectorAll('.bnav .tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function openModal(i){document.getElementById(i).classList.remove('hidden')}function closeModal(i){document.getElementById(i).classList.add('hidden')}
+document.getElementById('darkBtn').onclick=()=>document.documentElement.classList.toggle('dark');
+</script>
+</body>
+</html>

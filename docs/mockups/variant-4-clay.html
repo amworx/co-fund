@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 • طين — صندوق الفطور</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.css">
+<script>tailwind.config={darkMode:'class'}</script>
+<style>
+*:focus-visible{outline:2px solid #c2410c}
+body{font-family:'Segoe UI',Tahoma}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes fillBar{from{width:0}}
+@keyframes sheetUp{from{transform:translateY(80px);opacity:0}to{transform:none;opacity:1}}
+@keyframes wiggle{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.anim{animation:rise .5s ease both}.d1{animation-delay:.07s}.d2{animation-delay:.15s}
+.bar{animation:fillBar 1.1s ease both}
+.card{transition:transform .2s,box-shadow .2s}.card:hover{transform:translateY(-3px)}
+.btn{transition:transform .15s}.btn:active{transform:scale(.95)}
+.sheet{animation:sheetUp .32s ease both}
+.wiggle{animation:wiggle 2.6s ease-in-out infinite}
+.bnav button{transition:all .2s}.bnav button.active{transform:translateY(-8px)}
+.bnav button.active .dot{background:#9a3412;color:#fff;box-shadow:0 10px 20px -8px rgba(154,52,18,.6)}
+</style>
+</head>
+<body class="bg-stone-200 dark:bg-stone-950 flex justify-center min-h-screen text-stone-900 dark:text-stone-100">
+<div class="w-full max-w-md bg-[#faf5ec] dark:bg-stone-900 min-h-screen shadow-2xl flex flex-col relative pb-32">
+<div class="bg-gradient-to-bl from-orange-900 to-amber-800 text-orange-50 p-5 rounded-b-[2rem]">
+<div class="flex justify-between items-center anim"><b class="flex items-center gap-2 text-lg"><i class="fi fi-rs-shopping-basket"></i> سلة الفطور</b><div class="flex gap-2"><button id="darkBtn" class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center"><i class="fi fi-rs-moon"></i></button><a href="index.html" class="text-xs underline self-center">Hub</a></div></div>
+<p class="text-xs opacity-80 mt-1 flex items-center gap-2"><span class="flex items-center gap-1"><i class="fi fi-rs-users"></i> 10 أعضاء</span> • <span class="flex items-center gap-1"><i class="fi fi-rs-user"></i> ضيف واحد</span> • بدون تحويل</p>
+<div class="anim d1 bg-black/25 rounded-2xl p-3.5 mt-3 flex gap-3 items-center"><div class="wiggle w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center text-2xl"><i class="fi fi-rs-alarm-clock"></i></div><div class="text-sm"><b>الدفعة بعد 6 أيام — 1 أكتوبر</b><br><span class="text-xs opacity-80">SYP تخلص أول (700K) • TRL تكفي 6.9 يوم • USD يكفي 20 يوم</span></div></div>
+</div>
+<div class="flex gap-3 overflow-x-auto p-4">
+<div class="anim min-w-[215px] bg-gradient-to-b from-amber-100 to-amber-50 border-2 border-amber-300 rounded-3xl p-4 card"><p class="font-black flex items-center gap-2"><i class="fi fi-rs-coins text-amber-600 text-xl"></i> SYP</p><p class="text-3xl font-black tabular-nums">700K</p><p class="text-xs opacity-70">6.3 يوم • حرق 110K</p><div class="h-2.5 bg-amber-200 rounded-full mt-2 overflow-hidden"><div class="bar h-2.5 bg-orange-700 rounded-full" style="width:28%"></div></div></div>
+<div class="anim d1 min-w-[215px] bg-gradient-to-b from-orange-100 to-orange-50 border-2 border-orange-300 rounded-3xl p-4 card"><p class="font-black flex items-center gap-2"><i class="fi fi-rs-wallet text-orange-700 text-xl"></i> TRL</p><p class="text-3xl font-black tabular-nums">900</p><p class="text-xs opacity-70">6.9 يوم • حرق 130</p><div class="h-2.5 bg-orange-200 rounded-full mt-2 overflow-hidden"><div class="bar h-2.5 bg-orange-600 rounded-full" style="width:30%"></div></div></div>
+<div class="anim d2 min-w-[215px] bg-gradient-to-b from-yellow-100 to-amber-50 border-2 border-yellow-300 rounded-3xl p-4 card"><p class="font-black flex items-center gap-2"><i class="fi fi-rs-piggy-bank text-yellow-700 text-xl"></i> USD</p><p class="text-3xl font-black tabular-nums">60</p><p class="text-xs opacity-70">20 يوم</p><div class="h-2.5 bg-yellow-200 rounded-full mt-2 overflow-hidden"><div class="bar h-2.5 bg-yellow-600 rounded-full" style="width:60%"></div></div></div>
+</div>
+<main class="flex-1 px-4 space-y-3">
+<section id="tab-home" class="tab-panel space-y-3">
+<div class="card bg-white dark:bg-stone-800 rounded-3xl p-4 shadow text-sm anim"><b class="flex items-center gap-2"><i class="fi fi-rs-utensils text-orange-700"></i> اليوم — فطور خميس</b><p class="tabular-nums font-bold mt-1">320,000 SYP + 180 TRL • محمد • 9</p><p class="text-xs opacity-60 flex items-center gap-3 mt-1"><span class="flex items-center gap-1"><i class="fi fi-rs-receipt"></i> فاتورة</span><span class="flex items-center gap-1"><i class="fi fi-rs-comment"></i> واتساب</span></p></div>
+<div class="card bg-white dark:bg-stone-800 rounded-3xl p-4 shadow text-sm anim d1"><b class="flex items-center gap-2"><i class="fi fi-rs-clock text-amber-700"></i> الشفافية</b><p class="mt-1">أحمد دفع <b class="tabular-nums">200K SYP + 100 TRL</b> • 10:30</p><p>سارة صححت 250K ← 280K</p></div>
+</section>
+<section id="tab-payments" class="tab-panel hidden space-y-2 text-sm"><div class="bg-white dark:bg-stone-800 rounded-3xl p-4 flex items-center gap-2"><i class="fi fi-rs-wallet text-emerald-600"></i> أحمد — <b class="tabular-nums">200K + 100</b> • 10:30</div></section>
+<section id="tab-meals" class="tab-panel hidden space-y-2 text-sm"><div class="bg-white dark:bg-stone-800 rounded-3xl p-4 flex items-center gap-2"><i class="fi fi-rs-utensils text-orange-600"></i> 25/09 — <b class="tabular-nums">320K + 180</b></div></section>
+<section id="tab-members" class="tab-panel hidden grid grid-cols-2 gap-2 text-sm"><div class="bg-white dark:bg-stone-800 rounded-2xl p-3 text-center card"><i class="fi fi-rs-user text-2xl text-orange-700"></i><br><b>أحمد</b><br>نشط</div><div class="bg-amber-100 rounded-2xl p-3 text-center card"><i class="fi fi-rs-user text-2xl text-amber-700"></i><br><b>علي</b><br>ضيف أسبوع</div></section>
+<section id="tab-activity" class="tab-panel hidden text-sm bg-white dark:bg-stone-800 rounded-3xl p-4 space-y-2"><p class="flex items-center gap-2"><i class="fi fi-rs-receipt"></i> 10:30 أحمد إضافة دفعة</p><p class="flex items-center gap-2"><i class="fi fi-rs-edit"></i> أمس سارة تعديل</p></section>
+<p class="text-[11px] opacity-60 text-center">Uicons by <a class="underline" href="https://www.flaticon.com/uicons">Flaticon</a> • Variant 4 straight • طين/عنابي/كهرمان</p>
+</main>
+<button onclick="openModal('payModal')" class="btn absolute bottom-[86px] left-4 right-4 bg-gradient-to-l from-orange-800 to-amber-700 text-white rounded-3xl py-4 font-black text-lg shadow-xl flex items-center justify-center gap-2"><i class="fi fi-rs-plus"></i> دفعة / وجبة جديدة</button>
+<nav class="bnav absolute bottom-0 inset-x-0 bg-white/95 dark:bg-stone-800/95 backdrop-blur border-t"><div class="px-2 py-2 grid grid-cols-5 gap-1 text-[11px] font-bold text-center"><button data-tab="home" class="tab-btn active flex flex-col items-center gap-1"><span class="dot w-12 h-9 rounded-2xl bg-orange-100 dark:bg-stone-700 flex items-center justify-center text-lg"><i class="fi fi-rs-home"></i></span>سلة</button><button data-tab="payments" class="tab-btn flex flex-col items-center gap-1"><span class="dot w-12 h-9 rounded-2xl bg-orange-100 dark:bg-stone-700 flex items-center justify-center text-lg"><i class="fi fi-rs-wallet"></i></span>دفع</button><button data-tab="meals" class="tab-btn flex flex-col items-center gap-1"><span class="dot w-12 h-9 rounded-2xl bg-orange-100 dark:bg-stone-700 flex items-center justify-center text-lg"><i class="fi fi-rs-utensils"></i></span>وجبات</button><button data-tab="members" class="tab-btn flex flex-col items-center gap-1"><span class="dot w-12 h-9 rounded-2xl bg-orange-100 dark:bg-stone-700 flex items-center justify-center text-lg"><i class="fi fi-rs-users"></i></span>أعضاء</button><button data-tab="activity" class="tab-btn flex flex-col items-center gap-1"><span class="dot w-12 h-9 rounded-2xl bg-orange-100 dark:bg-stone-700 flex items-center justify-center text-lg"><i class="fi fi-rs-receipt"></i></span>أثر</button></div></nav>
+<div id="payModal" class="hidden absolute inset-0 z-50 bg-black/50 flex items-end"><form class="sheet bg-[#fffbf3] dark:bg-stone-800 w-full rounded-t-[2rem] p-5 space-y-3" onsubmit="event.preventDefault();closeModal('payModal')"><div class="w-12 h-1.5 bg-stone-300 rounded-full mx-auto"></div><b class="flex items-center gap-2"><i class="fi fi-rs-shopping-basket"></i> إضافة — سطر لكل عملة</b><div class="flex gap-2"><input required type="number" placeholder="المبلغ" class="flex-1 border-2 border-orange-200 rounded-2xl px-3 py-3 bg-transparent tabular-nums"><select class="border-2 border-orange-200 rounded-2xl px-2 bg-transparent"><option>SYP</option><option>TRL</option><option>USD</option></select></div><button class="btn w-full bg-orange-800 text-white rounded-2xl py-3.5 font-black">حفظ</button><button type="button" onclick="closeModal('payModal')" class="w-full text-xs">إغلاق</button></form></div>
+</div>
+<script>
+function showTab(id){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.add('hidden'));const el=document.getElementById('tab-'+id);el.classList.remove('hidden');el.style.animation='none';void el.offsetWidth;el.style.animation='';document.querySelectorAll('.bnav .tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));}
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function openModal(i){document.getElementById(i).classList.remove('hidden')}function closeModal(i){document.getElementById(i).classList.add('hidden')}
+document.getElementById('darkBtn').onclick=()=>document.documentElement.classList.toggle('dark');
+</script>
+</body>
+</html>

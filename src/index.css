@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ===== co-fund tokens (single source; mirrors mockup scale) ===== */
+:root {
+  --color-primary: #0f172a;
+  --color-secondary: #1e40af;
+  --color-accent: #a16207;
+  --color-gold: #eab308;
+  --color-success: #059669;
+  --color-destructive: #dc2626;
+  --color-muted: #64748b;
+  --color-bg: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+}
+.dark {
+  --color-bg: #0f172a;
+  --color-card: #192134;
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Noto Sans Arabic', Tahoma, sans-serif;
+  background: var(--color-bg);
+  -webkit-tap-highlight-color: transparent;
+}
+h1,
+h2,
+.num {
+  font-family: 'Noto Kufi Arabic', sans-serif;
+}
+*:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ===== icon size tokens (fi = Flaticon UIcons) ===== */
+.fi {
+  line-height: 1;
+  font-size: 22px;
+}
+.fi-sm {
+  font-size: 18px;
+}
+.fi-lg {
+  font-size: 24px;
+}
+
+/* ===== motion (150–300ms micro,Meaningful only) ===== */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fillBar {
+  from {
+    width: 0;
+  }
+}
+@keyframes sheetUp {
+  from {
+    transform: translateY(70px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes toastIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes barGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.anim {
+  animation: rise 0.5s cubic-bezier(0.22, 0.8, 0.32, 1) both;
+}
+.bar-anim {
+  animation: fillBar 1s cubic-bezier(0.22, 0.8, 0.32, 1) both;
+}
+.sheet-anim {
+  animation: sheetUp 0.28s cubic-bezier(0.22, 0.8, 0.32, 1) both;
+}
+.toast-anim {
+  animation: toastIn 0.25s ease both;
+}
+.col-anim {
+  transform-origin: bottom;
+  animation: barGrow 0.6s ease both;
+}
+.skel {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f8fafc 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 12px;
+}
+.dark .skel {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
