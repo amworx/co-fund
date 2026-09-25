@@ -51,6 +51,10 @@ h2,
 .fi-lg {
   font-size: 24px;
 }
+.fi-nav {
+  font-size: 26px;
+}
+/* icon tokens: fi-nav 26 dock • fi-lg 24 feature • fi 22 base • fi-sm 18 inline */
 
 /* ===== motion (150–300ms micro,Meaningful only) ===== */
 @keyframes rise {
